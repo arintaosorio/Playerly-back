@@ -10,7 +10,20 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.post('/usuario', (req, res) => {
+    const newusuario = usuario(req.body);
+    newusuario.save((err, usuario) => {
 
-app.listen(PORT, () => {
+        err
+            ? res.status(400).send(err)
+            : res.status(201).send(usuario);
+    })
+
+
+});
+
+
+
+app.listen(3000, () => {
     console.log('Server on');
 });
