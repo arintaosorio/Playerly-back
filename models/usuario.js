@@ -12,7 +12,7 @@ const UsuarioSchema = new mongoose.Schema({
         enum: ['F', 'M']
     },
     genero:{
-        type: String,
+        type: [String],
         enum: ['ROCK', 'POP', 'REGGAE', 'METAL']
     },
    
