@@ -5,8 +5,6 @@ const PORT = process.env.PORT;
 const app = express();
 app.use(cors());
 
-
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -18,9 +16,17 @@ app.post('/usuario', (req, res) => {
             ? res.status(400).send(err)
             : res.status(201).send(usuario);
     })
-
-
 });
+
+
+app.get('/all/usuarios',(req, res)=>{
+    usuario.find().exec()      
+        .then((result)=> {
+            res.send(result);
+        }).catch((err) => {
+            res.status(400).send(err)
+        });
+})
 
 
 
