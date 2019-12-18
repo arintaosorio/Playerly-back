@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const { usuario } = require('./models/index'); 
-//const PORT = process.env.PORT;
-const PORT = 3000
+const PORT = process.env.PORT;
+//const PORT = 3000
 const app = express();
 app.use(cors());
 
