@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const { usuario } = require('./models/index'); 
-const PORT = process.env.PORT;
+//const PORT = process.env.PORT;
+const PORT = 3000
 const app = express();
 app.use(cors());
 
@@ -28,6 +29,15 @@ app.get('/all/usuarios',(req, res)=>{
         });
 })
 
+
+app.get('/usuarios/:genero',(req, res)=>{
+    usuario.find({genero:req.params.genero}).exec()      
+        .then((result)=> {
+            res.send(result);
+        }).catch((err) => {
+            res.status(400).send(err)
+        });
+})
 
 
 app.listen(PORT, () => {
